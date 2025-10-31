@@ -1,9 +1,11 @@
-# Tavily MCP Client
+# MCP-Tavily: A FastAPI Application for Zapier MCP
 
 This project provides a simple Python client to connect and interact with the Zapier MCP (Multi-tool Co-pilot) server, specifically demonstrating how to fetch available tools, such as the Tavily search tool. This client is designed to be a straightforward example of integrating with the MCP platform for programmatic access to its functionalities.
 
 ## Features
 
+-   **FastAPI Integration**: Leverages the FastAPI framework for building robust and scalable APIs.
+-   **MCP-Tavily**: Utilizes the `fastapi_mcp` library to interact with the Zapier MCP server.
 -   Connects to a specified Zapier MCP server URL.
 -   Fetches and lists all available tools from the MCP server.
 -   Provides a foundation for making further MCP calls.

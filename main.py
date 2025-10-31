@@ -16,9 +16,8 @@ redis_client = redis.Redis(host=REDIS_HOST, port=REDIS_PORT, decode_responses=Tr
 # Initialize FastApiMCP
 mcp = FastApiMCP(
     app,
-    name="Zapier MCP API",
+    name="MCP-Tavily",
     description="API for interacting with Zapier MCP tools",
-    base_url=os.getenv("BASE_URL", "http://localhost:8000"),
     redis_client=redis_client
 )
 
