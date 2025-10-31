@@ -2,3 +2,4 @@ fastapi
 uvicorn
 fastapi-mcp
 redis
+psutil
