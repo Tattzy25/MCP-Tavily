@@ -31,11 +31,14 @@ async def read_root():
 
 @app.get("/health")
 async def health_check():
+    redis_status = "disconnected"
     try:
         await redis_client.ping()
-        return {"status": "ok", "redis": "connected"}
-    except Exception as e:
-        return {"status": "error", "redis": f"connection failed: {e}"}, 500
+        redis_status = "connected"
+    except Exception:
+        pass # We don't want to fail the health check just because Redis isn't ready yet
+
+    return {"status": "ok", "redis": redis_status}
 
 # You can add more FastAPI endpoints here to expose specific Zapier MCP tools
 # For example, an endpoint to trigger a specific Zapier action:
