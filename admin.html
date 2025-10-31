@@ -314,7 +314,7 @@
         // Health monitoring
         async function updateHealthStats() {
             try {
-                const response = await fetch('/health');
+                const response = await fetch('./health');
                 const healthData = await response.json();
                 
                 document.getElementById('uptime').textContent = healthData.uptime || 'N/A';
@@ -337,7 +337,7 @@
             };
 
             try {
-                const response = await fetch('/admin/tools', {
+                const response = await fetch('./admin/tools', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -360,7 +360,7 @@
 
         async function loadTools() {
             try {
-                const response = await fetch('/admin/tools');
+                const response = await fetch('./admin/tools');
                 const tools = await response.json();
                 
                 const toolsList = document.getElementById('tools-list');
@@ -391,7 +391,7 @@
         async function removeTool(toolId) {
             if (confirm('Are you sure you want to remove this tool?')) {
                 try {
-                    const response = await fetch(`/admin/tools/${toolId}`, {
+                    const response = await fetch(`./admin/tools/${toolId}`, {
                         method: 'DELETE'
                     });
 
