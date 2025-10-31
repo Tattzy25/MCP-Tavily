@@ -22,7 +22,7 @@ else:
 
 # Initialize FastApiMCP
 mcp = FastApiMCP(
-    app=app,
+    app,
     name="MCP-Tavily",
     description="MCP-Tavily: Utilizes the `fastapi_mcp` library to interact with the Zapier MCP server.",
 )
