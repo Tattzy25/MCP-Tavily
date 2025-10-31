@@ -29,6 +29,14 @@ mcp.mount()
 async def read_root():
     return {"message": "FastAPI MCP server is running!"}
 
+@app.get("/health")
+async def health_check():
+    try:
+        await redis_client.ping()
+        return {"status": "ok", "redis": "connected"}
+    except Exception as e:
+        return {"status": "error", "redis": f"connection failed: {e}"}, 500
+
 # You can add more FastAPI endpoints here to expose specific Zapier MCP tools
 # For example, an endpoint to trigger a specific Zapier action:
 # @app.post("/zapier/action")
