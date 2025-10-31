@@ -24,7 +24,6 @@ else:
 mcp = FastApiMCP(
     name="MCP-Tavily",
     description="MCP-Tavily: Utilizes the `fastapi_mcp` library to interact with the Zapier MCP server.",
-    version="0.0.1",
 )
 
 # Mount the MCP server to the FastAPI app

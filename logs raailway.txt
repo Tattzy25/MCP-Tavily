@@ -1,0 +1,109 @@
+You reached the start of the range
+Oct 31, 2025, 10:20 AM
+{"message":"Starting Container","attributes":{"level":"info"},"timestamp":"2025-10-31T17:21:25.000000000Z"}
+{"message":"Traceback (most recent call last):","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.270110843Z"}
+{"message":"  File \"/opt/venv/bin/uvicorn\", line 8, in <module>","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.270119003Z"}
+{"message":"    sys.exit(main())","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.270125574Z"}
+{"message":"             ^^^^^^","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.270130805Z"}
+{"message":"  File \"/opt/venv/lib/python3.12/site-packages/click/core.py\", line 1462, in __call__","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.270136647Z"}
+{"message":"    return self.main(*args, **kwargs)","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.270142327Z"}
+{"message":"           ^^^^^^^^^^^^^^^^^^^^^^^^^^","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.270148057Z"}
+{"message":"  File \"/opt/venv/lib/python3.12/site-packages/click/core.py\", line 1383, in main","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.270153590Z"}
+{"message":"    rv = self.invoke(ctx)","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.270159075Z"}
+{"message":"         ^^^^^^^^^^^^^^^^","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.270167138Z"}
+{"message":"  File \"/opt/venv/lib/python3.12/site-packages/click/core.py\", line 1246, in invoke","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.270173514Z"}
+{"message":"    return ctx.invoke(self.callback, **ctx.params)","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.270179066Z"}
+{"message":"           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.270184511Z"}
+{"message":"  File \"/opt/venv/lib/python3.12/site-packages/click/core.py\", line 814, in invoke","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.270190780Z"}
+{"message":"    return callback(*args, **kwargs)","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.270196125Z"}
+{"message":"           ^^^^^^^^^^^^^^^^^^^^^^^^^","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.270766151Z"}
+{"message":"  File \"/opt/venv/lib/python3.12/site-packages/uvicorn/main.py\", line 423, in main","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.270771290Z"}
+{"message":"    run(","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.270776598Z"}
+{"message":"  File \"/opt/venv/lib/python3.12/site-packages/uvicorn/main.py\", line 593, in run","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.270781372Z"}
+{"message":"    server.run()","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.270786602Z"}
+{"message":"  File \"/opt/venv/lib/python3.12/site-packages/uvicorn/server.py\", line 67, in run","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.270791797Z"}
+{"message":"    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.270831754Z"}
+{"message":"           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.270839413Z"}
+{"message":"^^^^^^^^^^^^^^^^^^^^^^","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.270845580Z"}
+{"message":"  File \"/root/.nix-profile/lib/python3.12/asyncio/runners.py\", line 194, in run","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.270852757Z"}
+{"message":"    return runner.run(main)","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.270861154Z"}
+{"message":"           ^^^^^^^^^^^^^^^^","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.270867975Z"}
+{"message":"  File \"/root/.nix-profile/lib/python3.12/asyncio/runners.py\", line 118, in run","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.270876762Z"}
+{"message":"    return self._loop.run_until_complete(task)","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.270882253Z"}
+{"message":"           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.272314306Z"}
+{"message":"  File \"/root/.nix-profile/lib/python3.12/asyncio/base_events.py\", line 687, in run_until_complete","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.272318560Z"}
+{"message":"    return future.result()","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.272322487Z"}
+{"message":"           ^^^^^^^^^^^^^^^","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.272327120Z"}
+{"message":"  File \"/opt/venv/lib/python3.12/site-packages/uvicorn/server.py\", line 71, in serve","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.272331103Z"}
+{"message":"    await self._serve(sockets)","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.272335171Z"}
+{"message":"  File \"/opt/venv/lib/python3.12/site-packages/uvicorn/server.py\", line 78, in _serve","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.272338682Z"}
+{"message":"    config.load()","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.272342798Z"}
+{"message":"                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.272660829Z"}
+{"message":"  File \"/opt/venv/lib/python3.12/site-packages/uvicorn/importer.py\", line 19, in import_from_string","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.272668581Z"}
+{"message":"  File \"/opt/venv/lib/python3.12/site-packages/uvicorn/config.py\", line 439, in load","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.272679627Z"}
+{"message":"    self.loaded_app = import_from_string(self.app)","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.272685621Z"}
+{"message":"  File \"<frozen importlib._bootstrap>\", line 1331, in _find_and_load_unlocked","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.273877324Z"}
+{"message":"  File \"<frozen importlib._bootstrap>\", line 935, in _load_unlocked","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.273884401Z"}
+{"message":"           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.273889672Z"}
+{"message":"  File \"<frozen importlib._bootstrap_external>\", line 995, in exec_module","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.273892535Z"}
+{"message":"^^^^^^^^^^^^^^^^","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.273896770Z"}
+{"message":"  File \"<frozen importlib._bootstrap>\", line 488, in _call_with_frames_removed","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.273901140Z"}
+{"message":"  File \"<frozen importlib._bootstrap>\", line 1387, in _gcd_import","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.273904206Z"}
+{"message":"  File \"/app/main.py\", line 24, in <module>","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.273909063Z"}
+{"message":"  File \"<frozen importlib._bootstrap>\", line 1360, in _find_and_load","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.273912352Z"}
+{"message":"             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.273914296Z"}
+{"message":"    module = importlib.import_module(module_str)","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.273926305Z"}
+{"message":"  File \"/root/.nix-profile/lib/python3.12/importlib/__init__.py\", line 90, in import_module","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.273928209Z"}
+{"message":"    return _bootstrap._gcd_import(name[level:], package, level)","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.273941411Z"}
+{"message":"    mcp = FastApiMCP(","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.275422071Z"}
+{"message":"          ^^^^^^^^^^^","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.275427817Z"}
+{"message":"TypeError: FastApiMCP.__init__() got an unexpected keyword argument 'version'","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:27.275433344Z"}
+{"message":"Traceback (most recent call last):","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:29.383005688Z"}
+{"message":"  File \"/opt/venv/bin/uvicorn\", line 8, in <module>","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:29.383009708Z"}
+{"message":"    sys.exit(main())","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:29.383013636Z"}
+{"message":"             ^^^^^^","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:29.383017802Z"}
+{"message":"  File \"/opt/venv/lib/python3.12/site-packages/click/core.py\", line 1462, in __call__","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:29.383021626Z"}
+{"message":"    return self.main(*args, **kwargs)","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:29.383025753Z"}
+{"message":"           ^^^^^^^^^^^^^^^^^^^^^^^^^^","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:29.383030231Z"}
+{"message":"  File \"/opt/venv/lib/python3.12/site-packages/click/core.py\", line 1383, in main","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:29.383034168Z"}
+{"message":"    rv = self.invoke(ctx)","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:29.383039427Z"}
+{"message":"         ^^^^^^^^^^^^^^^^","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:29.383043635Z"}
+{"message":"  File \"/opt/venv/lib/python3.12/site-packages/click/core.py\", line 1246, in invoke","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:29.383048329Z"}
+{"message":"    return ctx.invoke(self.callback, **ctx.params)","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:29.383052628Z"}
+{"message":"           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:29.383057010Z"}
+{"message":"  File \"/opt/venv/lib/python3.12/site-packages/click/core.py\", line 814, in invoke","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:29.383061062Z"}
+{"message":"    return callback(*args, **kwargs)","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:29.383065227Z"}
+{"message":"           ^^^^^^^^^^^^^^^^^^^^^^^^^","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:29.389067614Z"}
+{"message":"  File \"/opt/venv/lib/python3.12/site-packages/uvicorn/main.py\", line 423, in main","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:29.389073260Z"}
+{"message":"    run(","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:29.389079916Z"}
+{"message":"  File \"/opt/venv/lib/python3.12/site-packages/uvicorn/main.py\", line 593, in run","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:29.389086210Z"}
+{"message":"           ^^^^^^^^^^^^^^^^","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:29.389088311Z"}
+{"message":"    server.run()","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:29.389093462Z"}
+{"message":"  File \"/root/.nix-profile/lib/python3.12/asyncio/runners.py\", line 118, in run","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:29.389095095Z"}
+{"message":"  File \"/opt/venv/lib/python3.12/site-packages/uvicorn/server.py\", line 67, in run","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:29.389100613Z"}
+{"message":"    return self._loop.run_until_complete(task)","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:29.389102438Z"}
+{"message":"    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:29.389109195Z"}
+{"message":"           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:29.389109281Z"}
+{"message":"           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:29.389117475Z"}
+{"message":"  File \"/root/.nix-profile/lib/python3.12/asyncio/base_events.py\", line 687, in run_until_complete","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:29.389118232Z"}
+{"message":"^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:29.389125294Z"}
+{"message":"    return future.result()","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:29.389127124Z"}
+{"message":"  File \"/root/.nix-profile/lib/python3.12/asyncio/runners.py\", line 194, in run","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:29.389132670Z"}
+{"message":"           ^^^^^^^^^^^^^^^","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:29.389135116Z"}
+{"message":"    return runner.run(main)","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:29.389140318Z"}
+{"message":"  File \"/opt/venv/lib/python3.12/site-packages/uvicorn/server.py\", line 71, in serve","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:29.389142705Z"}
+{"message":"    await self._serve(sockets)","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:29.389147530Z"}
+{"message":"  File \"/opt/venv/lib/python3.12/site-packages/uvicorn/server.py\", line 78, in _serve","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:29.389153491Z"}
+{"message":"    config.load()","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:29.389158123Z"}
+{"message":"  File \"/opt/venv/lib/python3.12/site-packages/uvicorn/config.py\", line 439, in load","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:29.389161739Z"}
+{"message":"    self.loaded_app = import_from_string(self.app)","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:29.389165929Z"}
+{"message":"                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:29.389169669Z"}
+{"message":"  File \"/opt/venv/lib/python3.12/site-packages/uvicorn/importer.py\", line 19, in import_from_string","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:29.390285598Z"}
+{"message":"    module = importlib.import_module(module_str)","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:29.390291129Z"}
+{"message":"             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:29.390296607Z"}
+{"message":"  File \"/root/.nix-profile/lib/python3.12/importlib/__init__.py\", line 90, in import_module","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:29.390302548Z"}
+{"message":"    return _bootstrap._gcd_import(name[level:], package, level)","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:29.390308216Z"}
+{"message":"           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:29.390314075Z"}
+{"message":"  File \"<frozen importlib._bootstrap>\", line 1387, in _gcd_import","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:29.390323049Z"}
+{"message":"  File \"<frozen importlib._bootstrap>\", line 1360, in _find_and_load","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:29.390330044Z"}
+{"message":"  File \"<frozen importlib._bootstrap>\", line 1331, in _find_and_load_unlocked","attributes":{"level":"error"},"timestamp":"2025-10-31T17:21:29.390335679Z"}
