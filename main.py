@@ -1,31 +1,42 @@
 import asyncio
 import json
-from fastmcp import Client
-from fastmcp.client.transports import StreamableHttpTransport
+import os
+from fastapi import FastAPI
+from fastapi_mcp import FastApiMCP
+import redis.asyncio as redis
 
-# Create the transport with your MCP server URL
-server_url = "https://mcp.zapier.com/api/mcp/s/OWJmYzkwYTYtMjUwZS00YWRkLThkOTItMmM1ZTVlNTMzMTM5OjMzNjA2MjQxLTZhNTAtNGEyZC1iMjdlLTUyZGY1NTI1MjFiOA==/mcp"
-transport = StreamableHttpTransport(server_url)
+# Initialize FastAPI app
+app = FastAPI()
 
-# Initialize the client with the transport
-client = Client(transport=transport)
+# Configure Redis for session storage
+REDIS_HOST = os.getenv("REDIS_HOST", "localhost")
+REDIS_PORT = int(os.getenv("REDIS_PORT", 6379))
+redis_client = redis.Redis(host=REDIS_HOST, port=REDIS_PORT, decode_responses=True)
 
-async def main():
-    # Connection is established here
-    print("Connecting to MCP server...")
-    async with client:
-        print(f"Client connected: {client.is_connected()}")
+# Initialize FastApiMCP
+mcp = FastApiMCP(
+    app,
+    name="Zapier MCP API",
+    description="API for interacting with Zapier MCP tools",
+    base_url=os.getenv("BASE_URL", "http://localhost:8000"),
+    redis_client=redis_client
+)
 
-        # Make MCP calls within the context
-        print("Fetching available tools...")
-        tools = await client.list_tools()
-        print(f"Available tools: {json.dumps([t.name for t in tools], indent=2)}")
+# Mount the MCP server to the FastAPI app
+mcp.mount()
 
-        # Tools returned would look like:
-        # No custom tools available yet. Add tools via the MCP UI.
+@app.get("/")
+async def read_root():
+    return {"message": "FastAPI MCP server is running!"}
 
-    # Connection is closed automatically when exiting the context manager
-    print("Example completed")
+# You can add more FastAPI endpoints here to expose specific Zapier MCP tools
+# For example, an endpoint to trigger a specific Zapier action:
+# @app.post("/zapier/action")
+# async def trigger_zapier_action(payload: dict):
+#     # Logic to interact with Zapier MCP using the mcp client
+#     # This would involve using the tools discovered by the MCP client
+#     return {"status": "action triggered", "payload": payload}
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
