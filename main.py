@@ -38,8 +38,9 @@ async def read_root():
 async def health_check():
     redis_status = "disconnected"
     try:
-        await redis_client.ping()
-        redis_status = "connected"
+        if redis_client:  # Add None check
+            await redis_client.ping()
+            redis_status = "connected"
     except Exception:
         pass # We don't want to fail the health check just because Redis isn't ready yet
 
