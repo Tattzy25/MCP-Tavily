@@ -19,7 +19,7 @@ These instructions will get you a copy of the project up and running on your loc
 Before you begin, ensure you have the following installed:
 
 -   Python 3.8+
--   `fastmcp` library
+-   `fastapi-mcp` library
 
 You can install `fastmcp` using pip:
 
