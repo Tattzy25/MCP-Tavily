@@ -24,7 +24,7 @@ Before you begin, ensure you have the following installed:
 You can install `fastmcp` using pip:
 
 ```bash
-pip install fastmcp
+pip install fastapi-mcp
 ```
 
 ### Installation
