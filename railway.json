@@ -4,12 +4,10 @@
     "builder": "NIXPACKS"
   },
   "deploy": {
-
     "numReplicas": 1,
     "startCommand": "uvicorn main:app --host 0.0.0.0 --port $PORT --workers 1",
     "healthcheckPath": "/health",
     "sleepApplication": false,
-    "useLegacyStacker": false,
     "multiRegionConfig": {
       "us-west2": {
         "numReplicas": 1

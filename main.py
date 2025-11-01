@@ -21,30 +21,29 @@ else:
         redis_client = None
 
 # Initialize FastApiMCP
+BASE_URL = os.getenv("BASE_URL", "http://localhost:8080")
 mcp = FastApiMCP(
     app,
     name="MCP-Tavily",
-    description="MCP-Tavily: Utilizes the `fastapi_mcp` library to interact with the Zapier MCP server."
+    description="MCP-Tavily: Utilizes the `fastapi_mcp` library to interact with the Zapier MCP server.",
 )
+mcp.mount_http()
 
-# Mount the MCP server to the FastAPI app
-mcp.mount()
-
-@app.get("/")
-async def read_root():
-    return {"message": "FastAPI MCP server is running!"}
-
+# Enhanced health check endpoint with Redis status monitoring
 @app.get("/health")
 async def health_check():
     redis_status = "disconnected"
     try:
-        if redis_client:  # Add None check
+        if redis_client:  # Added null check for Redis client
             await redis_client.ping()
             redis_status = "connected"
     except Exception:
-        pass # We don't want to fail the health check just because Redis isn't ready yet
-
+        pass
     return {"status": "ok", "redis": redis_status}
+
+@app.get("/")
+async def read_root():
+    return {"message": "FastAPI MCP server is running!"}
 
 # You can add more FastAPI endpoints here to expose specific Zapier MCP tools
 # For example, an endpoint to trigger a specific Zapier action:
