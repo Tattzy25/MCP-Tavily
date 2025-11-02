@@ -1,59 +1,52 @@
 import asyncio
 import json
-import os
-from fastapi import FastAPI
-from fastapi_mcp import FastApiMCP
-import redis.asyncio as redis
 
-# Initialize FastAPI app
-app = FastAPI()
+from fastmcp import Client
+from fastmcp.client.transports import StreamableHttpTransport
 
-# Configure Redis for session storage
-REDIS_URL = os.getenv("REDIS_URL", "redis://localhost:6379")
-if REDIS_URL:
-    redis_client = redis.from_url(REDIS_URL, decode_responses=True)
-else:
-    REDIS_HOST = os.getenv("REDISHOST")
-    REDIS_PORT = os.getenv("REDISPORT")
-    if REDIS_HOST and REDIS_PORT:
-        redis_client = redis.Redis(host=REDIS_HOST, port=int(REDIS_PORT), decode_responses=True)
-    else:
-        redis_client = None
+# Create the transport with your MCP server URL
+server_url = "https://mcp.zapier.com/api/mcp/s/OWJmYzkwYTYtMjUwZS00YWRkLThkOTItMmM1ZTVlNTMzMTM5OjMzNjA2MjQxLTZhNTAtNGEyZC1iMjdlLTUyZGY1NTI1MjFiOA==/mcp"
+transport = StreamableHttpTransport(server_url)
 
-# Initialize FastApiMCP
-BASE_URL = os.getenv("BASE_URL", "http://localhost:8080")
-mcp = FastApiMCP(
-    app,
-    name="MCP-Tavily",
-    description="MCP-Tavily: Utilizes the `fastapi_mcp` library to interact with the Zapier MCP server.",
-)
-mcp.mount_http()
+# Initialize the client with the transport
+client = Client(transport=transport)
 
-# Enhanced health check endpoint with Redis status monitoring
-@app.get("/health")
-async def health_check():
-    redis_status = "disconnected"
-    try:
-        if redis_client:  # Added null check for Redis client
-            await redis_client.ping()
-            redis_status = "connected"
-    except Exception:
-        pass
-    return {"status": "ok", "redis": redis_status}
 
-@app.get("/")
-async def read_root():
-    return {"message": "FastAPI MCP server is running!"}
+async def main():
+    # Connection is established here
+    print("Connecting to MCP server...")
+    async with client:
+        print(f"Client connected: {client.is_connected()}")
 
-# You can add more FastAPI endpoints here to expose specific Zapier MCP tools
-# For example, an endpoint to trigger a specific Zapier action:
-# @app.post("/zapier/action")
-# async def trigger_zapier_action(payload: dict):
-#     # Logic to interact with Zapier MCP using the mcp client
-#     # This would involve using the tools discovered by the MCP client
-#     return {"status": "action triggered", "payload": payload}
+        # Make MCP calls within the context
+        print("Fetching available tools...")
+        tools = await client.list_tools()
+
+        print(f"Available tools: {json.dumps([t.name for t in tools], indent=2)}")
+        # Tools returned would look like:
+        # - name: "tavily_search"
+        #   description: "Search the web and return answers using Tavily"
+        #   params: ["query","topic","include_answer", ...]
+
+        # Example: Call a specific tool with parameters
+        print("Calling tavily_search...")
+        result = await client.call_tool(
+            "tavily_search",
+            {
+                "instructions": "Execute the Tavily: Search tool with the following parameters",
+                "query": "example-string",
+            },
+        )
+
+        # Parse the JSON string from the TextContent and print it nicely formatted
+        json_result = json.loads(result.content[0].text)
+        print(
+            f"\ntavily_search result:\n{json.dumps(json_result, indent=2)}"
+        )
+
+    # Connection is closed automatically when exiting the context manager
+    print("Example completed")
+
 
 if __name__ == "__main__":
-    import uvicorn
-    port = int(os.getenv("PORT", 8080))
-    uvicorn.run(app, host="0.0.0.0", port=port)
+    asyncio.run(main())
